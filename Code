@@ -1,0 +1,48 @@
+def merge(A, left, right):
+    i = 0
+    j = 0
+    k = 0
+    len_left = len(left)
+    len_right = len(right)
+    while len_left > i and len_right > j:
+        if left[i] > right[j]:
+            A[k] = right[j]
+            j = j + 1
+        else:
+            A[k] = left[i]
+            i = i + 1
+        k = k + 1
+   
+    while(i<len(left)):
+        A[k] = left[i]
+        i = i+1
+        k = k+1
+  
+    while(j<len(right)):
+        A[k] = right[j]
+        j = j+1
+        k = k+1
+    
+
+def mergesort(A):
+    len_A = len(A)
+    if len(A) < 2:
+        return 0
+    if len_A % 2 !=0:
+        mid = int(len_A/2) +1
+    else:
+        mid = int(len_A/2)
+    left = A[0:mid]
+    right = A[mid:len_A]
+    mergesort(left,ele,count)
+    mergesort(right,ele,count)
+    merge(A,left,right)
+
+T = int(input())
+while T>0:
+    A = list(map(int, raw_input().split()))
+    mergesort(A)
+    print(A)
+    T = T-1
+
+    
